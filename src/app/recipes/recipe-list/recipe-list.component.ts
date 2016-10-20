@@ -6,9 +6,12 @@ import { Recipe } from '../recipe';
   templateUrl: './recipe-list.component.html'
 })
 export class RecipeListComponent implements OnInit {
-	recipes: Recipe[] = []; 
-	@Output()recipeSelected = new EventEmitter<Recipe>();
-	recipe = new Recipe("Dummy", "Dummy", "http://prevenblog.com/wp-content/uploads/Dummy.jpg");
+	recipes: Recipe[] = [
+		new Recipe('Schnitzel', 'Very tasty', 'http://images.derberater.de/files/imagecache/456xXXX_berater/berater/slides/WienerSchnitzel.jpg', []),
+		new Recipe('Summer Salad', 'Okayish', 'http://ohmyveggies.com/wp-content/uploads/2013/06/the_perfect_summer_salad.jpg', [])
+	];
+	
+	@Output()recipeSelected = new EventEmitter<Recipe>();	
 	
 	onSelected(recipe: Recipe){
 		console.log("recipe selected: ");
@@ -16,9 +19,9 @@ export class RecipeListComponent implements OnInit {
 		this.recipeSelected.emit(recipe);
 	}
 	
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 }
